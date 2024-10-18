@@ -15,6 +15,10 @@ html, body {
     padding: 0;
 }
 
+div[data-controller="forecasts"] {
+    height: 100%;
+}
+
 /*
  * Prevent a flash of unstyled content before the custom element is defined.
  */

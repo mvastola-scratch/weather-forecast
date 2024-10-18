@@ -1,10 +1,16 @@
 // import { Loader } from "@googlemaps/js-api-loader"
-import { PlacePicker } from "@googlemaps/extended-component-library/lib/place_picker/place_picker";
+import {APILoader} from "@googlemaps/extended-component-library/api_loader.js";
+
+import type { PlacePicker } from "@googlemaps/extended-component-library/place_picker.js";
 import type { Place } from "@googlemaps/extended-component-library/lib/utils/googlemaps_types";
-// const loader = new Loader({
-//   apiKey: "YOUR_API_KEY",
-//   version: "weekly",
-// });
+
+const apiKeyMetaTag = document.querySelector('meta#google-maps-api-key') as HTMLMetaElement;
+if (!apiKeyMetaTag) {
+  console.warn("Expected element matching meta#google-maps-api-key to exist");
+}
+const GOOGLE_MAPS_API_KEY = apiKeyMetaTag.content;
+
+// {apiKey: "YOUR_API_KEY", version: "weekly"});
 
 // async function initMap(): Promise<void> {
 //   // Request needed libraries.
@@ -46,9 +52,18 @@ import type { Place } from "@googlemaps/extended-component-library/lib/utils/goo
  */
 // From https://jsfiddle.net/u43pj69g/
 async function ComponentInit() {
+  const loader = new APILoader({
+    apiKey: GOOGLE_MAPS_API_KEY,
+    version: "weekly",
+  });
+  const maps = await APILoader.importLibrary("maps");
+  const places = await APILoader.importLibrary("places");
+  console.log('Places library loaded')
   await customElements.whenDefined('gmp-map');
+  console.log('gmp-map element defined')
 
   const map = document.querySelector("gmp-map") as google.maps.MapElement;
+  if (!map) console.log('gmp-map element not found')
   // @ts-ignore
   const marker = document.getElementById("marker") as google.maps.Marker;
   const strictBoundsInputElement = document.getElementById("use-strict-bounds");
@@ -95,6 +110,6 @@ async function ComponentInit() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', ComponentInit);
+// document.addEventListener('DOMContentLoaded', ComponentInit);
 
-export { };
+export { ComponentInit };

@@ -6,16 +6,15 @@ class ForecastsController < ApplicationController
     end
   end
 
-  def fetch
-    # cookies['last_location']
+  def forecast
     @forecast = Forecast.fetch(forecast_params)
 
     respond_to do |format|
-      if @forecast.save
-        format.html { redirect_to @forecast, notice: "Forecast was successfully fetched." }
-        format.json { render :show, status: :created, location: @forecast }
+      if @forecast.valid?
+        format.html { render notice: "Forecast was successfully fetched." }
+        format.json { render json: @forecast.data, status: :ok }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { head :unprocessable_entity }
         format.json { render json: @forecast.errors, status: :unprocessable_entity }
       end
     end

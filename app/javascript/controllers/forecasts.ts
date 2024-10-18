@@ -1,7 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
+import { ComponentInit } from "../shared/place_picker";
+
 
 export default class ForecastsController extends Controller {
   connect() {
-    this.element.textContent = "Hello World!"
+    ComponentInit();
+    // this.element.textContent = "Hello World!"
   }
 }
