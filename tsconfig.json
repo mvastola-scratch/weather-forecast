@@ -10,7 +10,8 @@
       "dom",
       "dom.iterable"
     ],
-    "moduleResolution": "Node",
-    "jsx": "preserve"
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true
   }
 }

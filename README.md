@@ -35,6 +35,7 @@ Things you may want to cover:
     - https://github.com/googlemaps/extended-component-library
     - https://jsfiddle.net/u43pj69g/
     - https://github.com/googlemaps/extended-component-library/tree/main/examples/react_sample_app/src
+    - https://visgl.github.io/react-google-maps/docs
 
 ### Weather Forecasts
 

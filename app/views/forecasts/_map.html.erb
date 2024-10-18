@@ -1,42 +1,5 @@
-<div data-controller="forecasts">
-  <gmpx-api-loader
-    key="<%= Rails.application.credentials.google_maps_api_key! %>"
-    solution-channel="GMP_CCS_autocomplete_v4">
-  </gmpx-api-loader>
-  <gmp-map id="map" center="40.749933,-73.98633" zoom="13" map-id="b74e8b21059e7558">
-    <div slot="control-block-start-inline-start" class="pac-card" id="pac-card">
-      <div>
-        <div id="title">Autocomplete search</div>
-        <div id="type-selector" class="pac-controls">
-          <input type="radio" name="type" id="changetype-all" checked="checked" />
-          <label for="changetype-all">All</label>
-
-          <input type="radio" name="type" id="changetype-establishment" />
-          <label for="changetype-establishment">establishment</label>
-
-          <input type="radio" name="type" id="changetype-address" />
-          <label for="changetype-address">address</label>
-
-          <input type="radio" name="type" id="changetype-geocode" />
-          <label for="changetype-geocode">geocode</label>
-
-          <input type="radio" name="type" id="changetype-cities" />
-          <label for="changetype-cities">(cities)</label>
-
-          <input type="radio" name="type" id="changetype-regions" />
-          <label for="changetype-regions">(regions)</label>
-        </div>
-        <div id="strict-bounds-selector" class="pac-controls">
-          <input type="checkbox" id="use-strict-bounds" value="" />
-          <label for="use-strict-bounds">Restrict to map viewport</label>
-        </div>
-      </div>
-      <gmpx-place-picker id="place-picker" for-map="map"></gmpx-place-picker>
-    </div>
-    <gmp-advanced-marker id="marker"></gmp-advanced-marker>
-  </gmp-map>
-  <div id="infowindow-content">
-    <span id="place-name" class="title" style="font-weight: bold;"></span><br />
-    <span id="place-address"></span>
-  </div>
+<div id="location-autocomplete" data-initial-location="<%= location.to_json %>">
+  <gmpx-api-loader key="<%= Rails.application.credentials.google_maps_api_key! %>"></gmpx-api-loader>
+  <gmpx-place-picker placeholder="Enter a place" id="place-picker" type="address">
+  </gmpx-place-picker>
 </div>
