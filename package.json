@@ -1,14 +1,21 @@
 {
   "name": "app",
   "private": true,
+  "type": "module",
   "devDependencies": {
+    "@types/google.maps": "^3.58.1",
+    "@types/gulp": "^4.0.17",
     "esbuild": "^0.24.0",
-    "@types/google.maps": "^3.58.1"
+    "esbuild-sass-plugin": "^3.3.1",
+    "glob": "^11.0.0",
+    "gulp": "^5.0.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --define:GOOGLE_MAPS_API_KEY=\\'${GOOGLE_MAPS_API_KEY}\\'"
+    "build": "gulp watch"
   },
   "dependencies": {
-    "@googlemaps/extended-component-library": "^0.6.11"
+    "@googlemaps/extended-component-library": "^0.6.11",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3"
   }
 }

@@ -1,7 +1,13 @@
 import { runOnReady } from "./utils";
 import { APILoader } from '@googlemaps/extended-component-library/api_loader.js';
 import { PlacePicker } from '@googlemaps/extended-component-library/place_picker.js';
+import PlaceAutocompletePlaceSelectEvent = google.maps.places.PlaceAutocompletePlaceSelectEvent;
 
+const autocompleteCb = async (e: PlaceAutocompletePlaceSelectEvent) => {
+  const { place } = e;
+  await place.fetchFields({ fields: ['displayName', 'formattedAddress', 'location'] });
+  console.log(place);
+}
 const setupLocationAutocomplete = async () => {
   console.log('Running setupLocationAutocomplete');
   const rootElement = document.querySelector('#location-autocomplete');
@@ -11,11 +17,7 @@ const setupLocationAutocomplete = async () => {
   mapsLoader.apiKey = GOOGLE_MAPS_API_KEY;
   const placesLibrary = await APILoader.importLibrary("places") as google.maps.PlacesLibrary;
   const placeAutocomplete = new google.maps.places.PlaceAutocompleteElement({});
-  // @ts-ignore
-  placeAutocomplete.addEventListener('gmp-placeselect', async ({ place }: PlaceAutocompletePlaceSelectEvent) => {
-    await place.fetchFields({ fields: ['displayName', 'formattedAddress', 'location'] });
-    console.log(place);
-  });
+  placeAutocomplete.addEventListener('gmp-placeselect', autocompleteCb as (e: Event) => unknown);
   rootElement.appendChild(placeAutocomplete);
 
   console.log('setupLocationAutocomplete complete');
