@@ -1,4 +1,4 @@
-//@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap/dist/css/bootstrap.css';
 
 // Customization initially based on https://getbootstrap.com/docs/5.3/examples/cover/
 
@@ -45,6 +45,7 @@ body {
   border-bottom-color: #000;
 }
 
-.location-autocomplete {
-  margin-bottom: 1rem;
+#location-autocomplete {
+  width: 75%;
+  margin: 1rem auto;
 }

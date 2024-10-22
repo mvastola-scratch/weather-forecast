@@ -20,7 +20,7 @@ class ZipCodeLookup
     converters: %i[integer float]
   }
   class << self
-    delegate :fetch, to: :instance
+    def fetch(zip, default = nil) = instance.fetch(zip.to_i, default)
     def loaded? = defined?(@instance)
     def instance
       # This implementation ensures thread-safety

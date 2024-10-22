@@ -14,7 +14,7 @@ async function fetchCredential(name){
   const command = `bundle exec rails runner 'puts Rails.application.credentials.${name}!.to_json'`;
   console.log(`Running: ${command}`)
   return new Promise((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
+    const proc = exec(command, (error, stdout, stderr) => {
       if (stderr.trim().length > 0) console.warn(`STDERR: ${stderr.trim()}`);
       if (stdout.trim().length > 0) console.log(`STDOUT: ${stdout}`);
       if (error) {
@@ -42,6 +42,7 @@ async function buildConfig() {
     sourcemap: true,
     format: 'esm',
     plugins: [sassPlugin({
+      embedded: true,
       quietDeps: true,
       cache: true,
     })],
@@ -76,7 +77,7 @@ export const build = async (cb) => {
   const ctx = await buildContext();
   const result = await ctx.rebuild();
   cb();
-  return result;
+  // process.exit()
 }
 
 export const watch = async (cb) => {

@@ -20,7 +20,7 @@ class Forecast
         lat, lng = location.values_at(*%i[latitude longitude])
         pool.with { |forecaster| forecaster.forecast(lat:, lng:) }
       end
-      { location:, forecast:, cache_hit: }
+      [ location, forecast, cache_hit ]
     end
 
   protected

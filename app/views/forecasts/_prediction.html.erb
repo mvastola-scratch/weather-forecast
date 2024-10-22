@@ -1,20 +1,25 @@
-<div class="card forecast-card" style="width: 18rem;">
-  <img src="<%= prediction[:icon] %>>" class="card-img-top" alt="<%= prediction[:shortForecast] %>">
+<div class="card forecast-card" style="width: 16rem;">
+  <!-- TODO: remove rounded edges on image -->
+  <img src="<%= prediction[:icon] %>" class="card-img-top" alt="<%= prediction[:detailedForecast] %>" title="<%= prediction[:detailedForecast] %>">
   <h5 class="card-header"><%= prediction[:name] %></h5>
   <div class="card-body">
-    <h5 class="card-title"><%= prediction[:shortForecast] %></h5>
-    <p class="card-text"><%= prediction[:detailedForecast] %></p>
+    <p class="card-text">
+      <%= prediction[:shortForecast] %>
+      <!-- TODO: Fix this -->
+      <a data-bs-toggle="tooltip" data-bs-title="<%= prediction[:detailedForecast] %>">(Full)</a>
+    </p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
+      <!-- TODO: hide if zero(?) -->
       Chance of Rain: <%= prediction[:probabilityOfPrecipitation]&.fetch(:value) || 0 %>%
     </li>
     <li class="list-group-item">
+      <!-- TODO: fix degree symbol -->
       Temperature: <%= prediction[:temperature] %>&nbsp;&circ;<%= prediction[:temperatureUnit] %>
     </li>
     <li class="list-group-item">
       Wind: <%= prediction[:windSpeed] %> <%= prediction[:windDirection] %>
     </li>
   </ul>
-  <p class="card-text"><small class="text-body-secondary">Last updated _______</small></p>
 </div>
