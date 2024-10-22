@@ -1,29 +1,19 @@
 class ForecastsController < ApplicationController
-  def geolocate
+  def index
     # @location = params[:location] || cookies['last_location']
     respond_to do |format| # TODO: look up the short way of doing this
       format.html
     end
   end
 
-  def forecast
-    @forecast = Forecast.fetch(forecast_params)
+  def show
+    zip = params.fetch(:zip)
+    # TODO: handle if param is missing
+    @forecast = Forecast.lookup(zip:)
 
     respond_to do |format|
-      if @forecast.valid?
-        format.html { render notice: "Forecast was successfully fetched." }
-        format.json { render json: @forecast.data, status: :ok }
-      else
-        format.html { head :unprocessable_entity }
-        format.json { render json: @forecast.errors, status: :unprocessable_entity }
-      end
+      format.html { render layout: !request.xhr? } # no layout if xhr request
+      format.json
     end
   end
-
-  private
-    # Only allow a list of trusted parameters through.
-    def forecast_params
-      params.fetch(:forecast, {})
-      # params.permit(:forecast).require([:latitude, :longitude])
-    end
 end
