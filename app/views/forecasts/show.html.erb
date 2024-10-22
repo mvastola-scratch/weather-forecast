@@ -1,0 +1,19 @@
+<h1>
+  Weather Forecast
+  <!-- Alternative implementation:
+   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">Cache Miss</span>
+  </span>
+  -->
+
+  <% if @cache_hit %>
+    <span class="badge rounded-pill text-bg-info">Cache Hit</span>
+  <% else %>
+    <span class="badge rounded-pill text-bg-warning">Cache Miss</span>
+  <% end %>
+</h1>
+
+<div class="row">
+  <div class="forecast-cards col-sm-6 mb-3 mb-sm-0">
+    <%= render 'forecasts/prediction', collection: @forecast[:periods], as: :prediction %>
+  </div>
+</div>

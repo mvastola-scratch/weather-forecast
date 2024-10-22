@@ -10,7 +10,10 @@ require 'csv'
 # - allows us to just cache forecast api requests in faraday
 class ZipCodeLookup
   MTX = Mutex.new
-  DB_PATH = Rails.root / "db" / "zip_code_lookup.csv"
+  CSV_PATH = Rails.root / "db" / "zip_code_lookup.csv"
+  MARSHAL_PATH = CSV_PATH.sub_ext('.cache')
+  MARSHAL_TMP_PATH = CSV_PATH.sub_ext(".cache.#{Process.pid}.tmp")
+
   CSV_CONFIG = {
     headers: true,
     header_converters: %i[downcase symbol],
@@ -26,14 +29,50 @@ class ZipCodeLookup
     end
   end
 
+  # Original dataset is CSV, but cache it as JSON and prefer that
+  #   Doing this because my benchmark shows load time is 5.96s (CSV), 0.147s (JSON), 0.172s (Marshal)
+  #   Using Marshal because JSON doesn't play nice with integer keys in hashes
   def initialize
-    @data = {}
-    CSV.foreach(DB_PATH, **CSV_CONFIG) do |row|
-      @data[row[:zip]] = row.to_h.freeze
-    end
-    @data.freeze
+    # First try to load cache in marshal format
+    return if load_table_cache
+
+    # Otherwise load from original csv format
+    load_csv
+    # Then schedule an async task that dumps the marshaled data
+    @cache_task = Concurrent::Promise.new(executor: :io) { write_table_cache }.execute
+    # @cache_task.wait! for debugging only
   end
 
   attr_reader :data
   delegate_missing_to :data
+
+private
+  def load_csv
+    @data = {}
+    CSV.foreach(CSV_PATH, **CSV_CONFIG) do |row|
+      @data[row[:zip]] = row.to_h.freeze
+    end
+  end
+
+  def write_table_cache
+    File.write(MARSHAL_TMP_PATH.to_s, Marshal.dump(@data), encoding: 'ASCII-8BIT')
+    MARSHAL_TMP_PATH.rename(MARSHAL_PATH)
+    true
+  rescue StandardError => e
+    warn e.full_message
+    false
+  ensure
+    MARSHAL_TMP_PATH.unlink if MARSHAL_TMP_PATH.exist?
+  end
+
+  def load_table_cache
+    return false unless MARSHAL_PATH.file? && MARSHAL_PATH.size.positive?
+    @data = Marshal.load(File.read(MARSHAL_PATH, encoding: 'ASCII-8BIT'))
+    true
+  rescue StandardError => e
+    warn e.full_message
+    warn "Deleting #{MARSHAL_PATH}"
+    MARSHAL_PATH.unlink if MARSHAL_PATH.file?
+    false
+  end
 end

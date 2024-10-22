@@ -5,6 +5,7 @@ module ApplicationHelper
     error: "alert alert-error",
     alert: "alert alert-error",
   } .freeze
+
   def flash_class(level)
     FLASH_CLASSES.fetch(level.to_sym)
   end

@@ -18,6 +18,9 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Oj.mimic_JSON
+Oj.optimize_rails
+
 module Weather
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

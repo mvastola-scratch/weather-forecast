@@ -1,3 +1,4 @@
+import { exec } from 'child_process';
 import { glob } from 'glob'
 import { rm } from 'fs/promises'
 import { series } from 'gulp'
@@ -7,7 +8,32 @@ import { sassPlugin } from 'esbuild-sass-plugin'
 const ENTRYPOINTS = 'app/javascript/*.{js,ts}{x,}';
 const ENTRYPOINTS_IGNORE = '**/*.d.ts';
 const OUT_DIR = 'app/assets/builds';
-const IMPORTED_ENV_VARS = ['GOOGLE_MAPS_API_KEY'];
+const ENV_CREDENTIALS = ['GOOGLE_MAPS_API_KEY'];
+
+async function fetchCredential(name){
+  const command = `bundle exec rails runner 'puts Rails.application.credentials.${name}!.to_json'`;
+  console.log(`Running: ${command}`)
+  return new Promise((resolve, reject) => {
+    exec(command, (error, stdout, stderr) => {
+      if (stderr.trim().length > 0) console.warn(`STDERR: ${stderr.trim()}`);
+      if (stdout.trim().length > 0) console.log(`STDOUT: ${stdout}`);
+      if (error) {
+        reject(error);
+      } else {
+        resolve(stdout.toString().trim());
+      }
+    });
+  })
+
+}
+
+async function fetchCredentials() {
+  const result = {};
+  for (const name of ENV_CREDENTIALS) {
+    result[name.toUpperCase()] = await fetchCredential(name.toLowerCase());
+  }
+  return result;
+}
 
 async function buildConfig() {
   if (buildConfig.config) return buildConfig.config;
@@ -21,12 +47,11 @@ async function buildConfig() {
     })],
     outdir: OUT_DIR,
     publicPath: '/assets',
-    define: {},
+    define: {
+      ...await fetchCredentials()
+    },
     bundle: true,
   };
-  IMPORTED_ENV_VARS.forEach(name => {
-    buildConfig.config.define[name] = JSON.stringify(process.env[name] || null);
-  });
   console.dir(buildConfig.config)
   return buildConfig.config;
 }
@@ -50,7 +75,7 @@ export const clean = async (cb) => {
 export const build = async (cb) => {
   const ctx = await buildContext();
   const result = await ctx.rebuild();
-  cb(result);
+  cb();
   return result;
 }
 

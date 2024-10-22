@@ -1,12 +1,13 @@
 <h1>Weather Forecast</h1>
 
 <p class="lead">Please select a location</p>
-<div id="location-autocomplete">
-  <gmpx-api-loader key="<%= Rails.application.credentials.google_maps_api_key! %>"></gmpx-api-loader>
-  <gmpx-place-picker class="place-autocomplete" placeholder="Enter a place" id="place-picker" type="address">
-  </gmpx-place-picker>
+<div>
+  <div id="location-autocomplete">
+    <gmpx-api-loader key="<%= Rails.application.credentials.google_maps_api_key! %>"></gmpx-api-loader>
+    <gmpx-place-picker class="place-autocomplete" placeholder="Enter a place" id="place-picker" type="address">
+    </gmpx-place-picker>
+  </div>
 </div>
-
 <p class="lead">
   <a href="#" class="btn btn-lg btn-outline-dark fw-bold">Lookup</a>
 </p>
