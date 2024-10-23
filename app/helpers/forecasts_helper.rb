@@ -2,7 +2,7 @@
 module ForecastsHelper
   CAROUSEL_BUTTON_LABELS = { prev: 'Previous', next: 'Next' }
   def forecast_carousel_indicator(date, idx, target:)
-    content_tag :button, date, type: "button", 'data-bs-target': target, 'data-bs-slide-to': idx,
+    content_tag :button, 'A', type: "button", 'data-bs-target': target, 'data-bs-slide-to': idx,
                 class: [idx.zero? && "active"].compact_blank.join(' '),
                 'aria-current': idx.zero?, 'aria-label': date.to_s
   end
@@ -17,7 +17,8 @@ module ForecastsHelper
   def forecast_carousel_item(idx, &block)
     content_tag :div,
                 class: ['forcast-carousel-item', 'carousel-item', idx.zero? && 'active'].compact_blank.join(' ') do
-      placeholder_image + content_tag(:div, class: 'container') { capture(&block) }
+      # placeholder_image +
+        content_tag(:div, class: 'container') { capture(&block) }
     end
   end
 

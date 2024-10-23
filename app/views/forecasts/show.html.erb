@@ -21,7 +21,9 @@
     <div class="carousel-inner">
       <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
         <%= forecast_carousel_item idx do %>
-          <%= render partial: 'forecasts/prediction', collection: forecasts, as: :prediction %>
+          <div class="d-flex justify-content-center">
+            <%= render partial: 'forecasts/prediction', collection: forecasts, as: :prediction %>
+          </div>
         <% end %>
       <% end %>
     </div>
