@@ -1,11 +1,12 @@
 <div class="card forecast-card mx-1" style="width: 16rem;">
   <!-- TODO: remove rounded edges on image -->
-  <img src="<%= prediction[:icon] %>" class="card-img-top" alt="<%= prediction[:detailedForecast] %>" title="<%= prediction[:detailedForecast] %>">
+  <!-- TODO: we should really pull all these icons and serve locally so they can be cached/preloaded -->
+  <%= tag :img, src: prediction[:icon], class: "card-img-top", alt: prediction[:detailedForecast], title: prediction[:detailedForecast] %>
   <h5 class="card-header"><%= prediction[:name] %></h5>
   <div class="card-body">
     <p class="card-text">
       <%= prediction[:shortForecast] %>
-      <!-- TODO: Fix this -->
+      <!-- TODO: replace `(Full)` with an info indicator -->
       <a data-bs-toggle="tooltip" data-bs-title="<%= prediction[:detailedForecast] %>">(Full)</a>
     </p>
   </div>

@@ -15,8 +15,8 @@ module ForecastsHelper
   end
 
   def forecast_carousel_item(idx, &block)
-    content_tag :div,
-                class: ['forcast-carousel-item', 'carousel-item', idx.zero? && 'active'].compact_blank.join(' ') do
+    classes = ['forcast-carousel-item', 'carousel-item', idx.zero? && 'active'].compact_blank
+    content_tag :div, class: classes.join(' ') do
       # placeholder_image +
         content_tag(:div, class: 'container') { capture(&block) }
     end

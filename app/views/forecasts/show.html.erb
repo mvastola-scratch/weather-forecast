@@ -12,7 +12,7 @@
 </h3>
 
   <!-- TODO: add `data-bs-ride="carousel"` to autoplay carousel -->
-  <div id="forecast-carousel" class="carousel slide mb-6">
+  <div id="forecast-carousel" class="carousel slide mb-6 pb-2">
     <div class="carousel-indicators">
       <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
         <%= forecast_carousel_indicator forecasts.first[:name], idx, target: "#forecast-carousel" %>

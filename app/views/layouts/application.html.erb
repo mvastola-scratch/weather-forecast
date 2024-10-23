@@ -19,7 +19,7 @@
   </head>
 
   <!-- Theme initially based on examples at https://getbootstrap.com/docs/5.3/examples/carousel/ -->
-  <body class="h-100 text-center">
+  <body class="h-100 text-center d-flex flex-column">
 
   <header class="sticky-top w-100" data-bs-theme="dark">
     <nav class="navbar navbar-expand-md navbar-dark  bg-dark">
@@ -42,7 +42,7 @@
     </nav>
   </header>
 
-  <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
+  <div class="cover-container d-flex w-100 p-3 mx-auto flex-column flex-grow-1">
     <main class="px-3">
       <div id="flashes">
         <% flash.each do |key, value| %>
