@@ -18,23 +18,37 @@
     <%= stylesheet_link_tag "application" %>
   </head>
 
-  <body class="d-flex h-100 text-center">
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="mb-auto">
-      <div>
-        <h3 class="float-md-start mb-0">Weather Forecast</h3>
-        <nav class="nav nav-masthead justify-content-center float-md-end">
-          <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Lookup</a>
-          <!--a class="nav-link fw-bold py-1 px-0" href="#">Features</a-->
-          <!--a class="nav-link fw-bold py-1 px-0" href="#">Contact</a-->
-        </nav>
-      </div>
-    </header>
+  <!-- Theme initially based on examples at https://getbootstrap.com/docs/5.3/examples/carousel/ -->
+  <body class="h-100 text-center">
 
+  <header class="sticky-top w-100" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark  bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Weather</a>
+        <div class="navbar-collapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <%= nav_item search_path, 'Search', is_current: (current_page?(search_path) || current_page?(forecast_path)) %>
+
+          </ul>
+          <ul class="navbar-nav mb-2 mb-md-0">
+            <%#= nav_item '#', 'README.md', disabled: true %>
+            <%#= nav_item '#', 'Resume', disabled: true %>
+            <%= nav_item 'mailto:Mike@Vasto.la', 'Contact' %>
+          </ul>
+        </div>
+      </div>
+      <br />
+    </nav>
+  </header>
+
+  <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
     <main class="px-3">
-      <% flash.each do |key, value| %>
-        <%= tag :div, value, class: flash_class(key) %>
-      <% end %>
+      <div id="flashes">
+        <% flash.each do |key, value| %>
+          <%= tag :div, value, class: flash_class(key) %>
+        <% end %>
+      </div>
+
       <%= yield %>
     </main>
 

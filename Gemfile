@@ -19,6 +19,7 @@ gem "jbuilder"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 gem "kredis"
 
+# gem "addressable", require: %w[addressable/uri]
 gem "csv"
 gem "faraday"
 gem "faraday-retry"

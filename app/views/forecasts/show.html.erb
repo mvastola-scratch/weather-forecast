@@ -11,9 +11,27 @@
   <% end %>
 </h3>
 
+  <!-- TODO: add `data-bs-ride="carousel"` to autoplay carousel -->
+  <div id="forecast-carousel" class="carousel slide mb-6">
+    <div class="carousel-indicators">
+      <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
+        <%= forecast_carousel_indicator forecasts.first[:name], idx, target: "#forecast-carousel" %>
+      <% end %>
+    </div>
+    <div class="carousel-inner">
+      <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
+        <%= forecast_carousel_item idx do %>
+          <%= render partial: 'forecasts/prediction', collection: forecasts, as: :prediction %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= carousel_buttons(target: "#forecast-carousel") %>
+  </div>
+
 <small class="text-body-secondary">Last updated _______</small>
 <div class="row">
   <div class="forecast-cards d-flex flex-wrap">
-    <%= render partial: 'forecasts/prediction', collection: @forecast[:periods], as: :prediction %>
+    <%#= render partial: 'forecasts/prediction', collection: @forecast[:periods], as: :prediction %>
   </div>
 </div>

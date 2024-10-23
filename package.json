@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "devDependencies": {
+    "@types/bootstrap": "^5.2.10",
     "@types/google.maps": "^3.58.1",
     "@types/gulp": "^4.0.17",
     "esbuild": "^0.24.0",
