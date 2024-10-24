@@ -1,19 +1,23 @@
-<h3>
-  <%= @location[:city] %>, <%= @location[:state] %> Forecast
+<div>
   <!-- Alternative implementation:
    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">Cache Miss</span>
   </span>
   -->
+  <span class="h3">
+  <%= @location[:city] %>, <%= @location[:state] %> Forecast
+  </span>
   <% if @cache_hit %>
-    <span class="badge rounded-pill text-bg-info">Cache Hit</span>
+    <span class="badge rounded-pill text-bg-info align-text-top"><small>Cache Hit</small></span>
   <% else %>
-    <span class="badge rounded-pill text-bg-warning">Cache Miss</span>
+    <span class="badge rounded-pill text-bg-warning align-text-top"><small>Cache Miss</small></span>
   <% end %>
-</h3>
+
+</div>
+  <small class="text-body-secondary">Last updated _______</small>
 
   <!-- TODO: add `data-bs-ride="carousel"` to autoplay carousel -->
-  <div id="forecast-carousel" class="carousel slide mb-6 pb-2">
-    <div class="carousel-indicators">
+  <div id="forecast-carousel" class="carousel slide mb-6 py-2 mt-2">
+    <div class="carousel-indicators justify-content-center">
       <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
         <%= forecast_carousel_indicator forecasts.first[:name], idx, target: "#forecast-carousel" %>
       <% end %>
@@ -31,7 +35,6 @@
     <%= carousel_buttons(target: "#forecast-carousel") %>
   </div>
 
-<small class="text-body-secondary">Last updated _______</small>
 <div class="row">
   <div class="forecast-cards d-flex flex-wrap">
     <%#= render partial: 'forecasts/prediction', collection: @forecast[:periods], as: :prediction %>

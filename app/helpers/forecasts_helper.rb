@@ -1,10 +1,10 @@
 # Based on https://getbootstrap.com/docs/5.3/examples/carousel/
 module ForecastsHelper
   CAROUSEL_BUTTON_LABELS = { prev: 'Previous', next: 'Next' }
-  def forecast_carousel_indicator(date, idx, target:)
-    content_tag :button, 'A', type: "button", 'data-bs-target': target, 'data-bs-slide-to': idx,
+  def forecast_carousel_indicator(label, idx, target:)
+    content_tag :button, label, type: "button", 'data-bs-target': target, 'data-bs-slide-to': idx,
                 class: [idx.zero? && "active"].compact_blank.join(' '),
-                'aria-current': idx.zero?, 'aria-label': date.to_s
+                'aria-current': idx.zero?, 'aria-label': label
   end
 
   def placeholder_image(height: '100%', width: '100%', fill: "var(--bs-secondary-color)", **args)
@@ -35,9 +35,6 @@ module ForecastsHelper
   end
 
   def carousel_buttons(target:)
-    capture do
-      carousel_button(:prev, target:)
-      carousel_button(:next, target:)
-    end
+    carousel_button(:prev, target:) + carousel_button(:next, target:)
   end
 end
