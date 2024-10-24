@@ -10,10 +10,8 @@
 
     <%= yield :head %>
 
-    <!-- TODO: add icon to assets -->
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="icon" href="<%= asset_path 'logo.svg' %>" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="<%= asset_path 'logo.svg' %>">
     <%= javascript_include_tag "application", type: "module" %>
     <%= stylesheet_link_tag "application" %>
   </head>
@@ -28,7 +26,6 @@
         <div class="navbar-collapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <%= nav_item search_path, 'Search', is_current: (current_page?(search_path) || current_page?(forecast_path)) %>
-
           </ul>
           <!-- These will be right-aligned -->
           <ul class="navbar-nav mb-2 mb-md-0">

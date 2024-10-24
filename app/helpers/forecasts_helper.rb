@@ -27,9 +27,10 @@ module ForecastsHelper
     content_tag :div, class: 'carousel-button' do
       content_tag :button, class: "carousel-control-#{action}", 'data-bs-target': target,
                   'data-bs-slide': action do
-        content_tag :span, '',
+        icon = content_tag :span, '',
                     class: "carousel-control-#{action}-icon", 'aria-hidden': true
-        content_tag :span, label, class: 'visually-hidden'
+        hidden_label = content_tag :span, label, class: 'visually-hidden'
+        icon + hidden_label
       end
     end
   end

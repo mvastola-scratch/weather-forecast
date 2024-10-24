@@ -13,30 +13,29 @@
   <% end %>
 
 </div>
-  <small class="text-body-secondary">Last updated _______</small>
+  <small class="text-body-secondary">
+    Last updated <%= Time.parse(@forecast[:updateTime]).localtime.to_fs(:rfc822) %>
+  </small>
 
-  <!-- TODO: add `data-bs-ride="carousel"` to autoplay carousel -->
-  <div id="forecast-carousel" class="carousel slide mb-6 py-2 mt-2">
-    <div class="carousel-indicators justify-content-center">
-      <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
-        <%= forecast_carousel_indicator forecasts.first[:name], idx, target: "#forecast-carousel" %>
-      <% end %>
-    </div>
-    <div class="carousel-inner">
-      <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
-        <%= forecast_carousel_item idx do %>
-          <div class="d-flex justify-content-center">
-            <%= render partial: 'forecasts/prediction', collection: forecasts, as: :prediction %>
-          </div>
+  <div id="forecast-carousel" class="carousel slide mb-6 py-2 mt-2" data-bs-ride="carousel">
+    <div id="forecast-carousel-frame">
+      <div class="carousel-inner">
+        <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
+          <%= forecast_carousel_item idx do %>
+            <div class="d-flex justify-content-center">
+              <%= render partial: 'forecasts/prediction', collection: forecasts, as: :prediction %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+
+      <div class="carousel-indicators justify-content-center">
+        <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
+          <%= forecast_carousel_indicator idx.zero? ? 'Today' : forecasts.first[:name], idx, target: "#forecast-carousel" %>
+        <% end %>
+      </div>
     </div>
 
     <%= carousel_buttons(target: "#forecast-carousel") %>
   </div>
 
-<div class="row">
-  <div class="forecast-cards d-flex flex-wrap">
-    <%#= render partial: 'forecasts/prediction', collection: @forecast[:periods], as: :prediction %>
-  </div>
-</div>

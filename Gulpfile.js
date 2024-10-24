@@ -46,6 +46,9 @@ async function buildConfig() {
       quietDeps: true,
       cache: true,
     })],
+    loader: {
+      '.svg': 'dataurl'
+    },
     outdir: OUT_DIR,
     publicPath: '/assets',
     define: {
