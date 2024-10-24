@@ -79,8 +79,9 @@ export const clean = async (cb) => {
 export const build = async (cb) => {
   const ctx = await buildContext();
   const result = await ctx.rebuild();
+  await ctx.cancel();
+  await ctx.dispose();
   cb();
-  // process.exit()
 }
 
 export const watch = async (cb) => {

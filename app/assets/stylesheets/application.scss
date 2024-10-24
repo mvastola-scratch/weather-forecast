@@ -1,6 +1,11 @@
+@use 'sass:color';
+
+// Ideally we want to import the SASS version of bootstrap so we can configure defaults,
+//  but doing so produces a ton of warnings in esbuild that can't be silenced
 @import 'bootstrap/dist/css/bootstrap.css';
 
-// Customization initially based on https://getbootstrap.com/docs/5.3/examples/cover/
+
+// Customization initially (now loosely) based on https://getbootstrap.com/docs/5.3/examples/cover/
 
 html, body {
   height: 100%;
@@ -50,7 +55,7 @@ $info-icon-color: #2196F3;
 .info-icon {
   fill: $info-icon-color;
   &:hover {
-    fill: darken($info-icon-color, 20);
+    fill: color.adjust($info-icon-color, $lightness: -20%);
   }
 }
 

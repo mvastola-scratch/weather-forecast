@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'csv'
 # Singleton class holding a lookup table of zip codes to coordinates
 # Since the location is fetched from google client-side, this
 # - prevents cache poisoning
@@ -17,7 +16,7 @@ class ZipCodeLookup
   CSV_CONFIG = {
     headers: true,
     header_converters: %i[downcase symbol],
-    converters: %i[integer float]
+    converters: %i[integer float] # zip needs to be integer to avoid issues with leading 0s
   }
   class << self
     def fetch(zip, default = nil) = instance.fetch(zip.to_i, default)
@@ -40,7 +39,7 @@ class ZipCodeLookup
     load_csv
     # Then schedule an async task that dumps the marshaled data
     @cache_task = Concurrent::Promise.new(executor: :io) { write_table_cache }.execute
-    # @cache_task.wait! for debugging only
+    # @cache_task.wait! run synchronously (for debugging only)
   end
 
   attr_reader :data
@@ -48,6 +47,8 @@ class ZipCodeLookup
 
 private
   def load_csv
+    require 'csv'
+
     @data = {}
     CSV.foreach(CSV_PATH, **CSV_CONFIG) do |row|
       @data[row[:zip]] = row.to_h.freeze

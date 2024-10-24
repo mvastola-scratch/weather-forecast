@@ -6,15 +6,26 @@ A simple Rails app that looks up weather forecasts
 
 **To Launch**
 
+_First, you must obtain the `master.key` file from the author for the Google Maps API Key_
+
 ```bash
 $ bundle install
 $ yarn install
-# TODO: Run `rails runner ...` from the `Gulpfile.js`
-$ GOOGLE_MAPS_API_KEY="$(bundle exec rails runner 'puts Rails.application.credentials.google_maps_api_key!')" gulp 
+$ yarn build 
 $ bundle exec rails s
 ```
 
-## Services Engaged
+## Routes
+```
+Prefix      Verb URI Pattern                Controller#Action
+root        GET  /                          redirect(301, /forecast)
+search      GET  /forecast(.:format)        forecasts#index
+forecast    GET  /forecast/:zip(.:format)   forecasts#show
+```
+
+## APIs Consumed
+
+**TODO: Simplify this list of URLS**
 
 ### Geocoding
 

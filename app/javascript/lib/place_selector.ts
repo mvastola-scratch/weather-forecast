@@ -11,13 +11,23 @@ const autocompleteCb = async (e: PlaceAutocompletePlaceSelectEvent) => {
   })
   const zip = zipComponents ? zipComponents[0]?.shortText : null;
   console.log([place, zip]);
-  if (zip) document.location.pathname = `/forecast/${zip}`;
+  // TODO: this sort of makes the button useless, but at the same time,
+  //  google doesn't seem to offer an event when the value of the textbox is cleared,
+  //  so if we relied on the button, it wouldn't always be in-sync with the text box
+  if (zip) {
+    document.location.pathname = `/forecast/${zip}`;
+  } else {
+    alert("US Zip Code required. Please provide an exact address within the US.")
+  }
 }
 const setupLocationAutocomplete = async () => {
-  console.log('Running setupLocationAutocomplete');
   const rootElement = document.querySelector('#location-autocomplete');
-  if (!rootElement) throw new Error('No #location-autocomplete found');
+  if (!rootElement) {
+    console.warn('No #location-autocomplete found. Will not setup autocomplete prompt');
+    return;
+  }
 
+  console.log('Running setupLocationAutocomplete');
   const mapsLoader = new APILoader();
   // TODO: see if this is still needed in the JS
   mapsLoader.apiKey = GOOGLE_MAPS_API_KEY;

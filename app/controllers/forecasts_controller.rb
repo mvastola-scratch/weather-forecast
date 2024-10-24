@@ -24,7 +24,7 @@ class ForecastsController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: !request.xhr? } # no layout if xhr request
-      format.json
+      # format.json
     end
   end
 end
