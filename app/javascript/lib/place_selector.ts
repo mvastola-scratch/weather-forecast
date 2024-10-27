@@ -11,7 +11,7 @@ const autocompleteCb = async (e: PlaceAutocompletePlaceSelectEvent) => {
   })
   const zip = zipComponents ? zipComponents[0]?.shortText : null;
   console.log([place, zip]);
-  // TODO: this sort of makes the button useless, but at the same time,
+  // TODO: this sort of makes the 'Lookup button useless, but at the same time,
   //  google doesn't seem to offer an event when the value of the textbox is cleared,
   //  so if we relied on the button, it wouldn't always be in-sync with the text box
   if (zip) {

@@ -4,9 +4,9 @@
   </span>
   -->
   <span class="h3">
-  <%= @location[:city] %>, <%= @location[:state] %> Forecast
+  <%= @forecast.zip_location[:city] %>, <%= @forecast.zip_location[:state] %> Forecast
   </span>
-  <% if @cache_hit %>
+  <% if @forecast.cache_hit %>
     <span class="badge rounded-pill text-bg-info align-text-top"><small>Cache Hit</small></span>
   <% else %>
     <span class="badge rounded-pill text-bg-warning align-text-top"><small>Cache Miss</small></span>
@@ -14,14 +14,14 @@
 
 </div>
   <small class="text-body-secondary">
-    Last updated <%= Time.parse(@forecast[:updateTime]).localtime.to_fs(:rfc822) %>
+    Last updated <%= @forecast.update_time.localtime.to_fs(:rfc822) %>
   </small>
 
   <div id="forecast-carousel" class="carousel slide mb-6 py-2 mt-2" data-bs-ride="carousel">
     <div id="forecast-carousel-frame">
       <div class="carousel-inner">
-        <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
-          <%= forecast_carousel_item idx do %>
+        <% @forecast.by_date.each.with_index do |forecasts, date_idx| %>
+          <%= forecast_carousel_item date_idx do %>
             <div class="d-flex justify-content-center">
               <%= render partial: 'forecasts/prediction', collection: forecasts, as: :prediction %>
             </div>
@@ -30,8 +30,8 @@
       </div>
 
       <div class="carousel-indicators justify-content-center">
-        <% @forecast[:dates].each_value.with_index do |forecasts, idx| %>
-          <%= forecast_carousel_indicator idx.zero? ? 'Today' : forecasts.first[:name], idx, target: "#forecast-carousel" %>
+        <% @forecast.by_date.each.with_index do |forecasts, date_idx| %>
+          <%= forecast_carousel_indicator forecasts.first.name, date_idx, target: "#forecast-carousel" %>
         <% end %>
       </div>
     </div>

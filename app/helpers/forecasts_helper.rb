@@ -1,7 +1,9 @@
 # Based on https://getbootstrap.com/docs/5.3/examples/carousel/
 module ForecastsHelper
-  CAROUSEL_BUTTON_LABELS = { prev: 'Previous', next: 'Next' }
+  CAROUSEL_BUTTON_LABELS = { prev: 'Previous', next: 'Next' }.freeze
+  FIXED_DATE_LABELS = { 0 => 'Today', 1 => 'Tomorrow' }.freeze
   def forecast_carousel_indicator(label, idx, target:)
+    label = FIXED_DATE_LABELS.fetch(idx, label)
     content_tag :button, label, type: "button", 'data-bs-target': target, 'data-bs-slide-to': idx,
                 class: [idx.zero? && "active"].compact_blank.join(' '),
                 'aria-current': idx.zero?, 'aria-label': label

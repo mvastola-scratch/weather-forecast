@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Forecast
+class ForecastFetcher
   POOL_SIZE = 2 # adjustable if higher load expected
   BASE_URL = "https://api.weather.gov/"
   CACHE_TTL = 30.minutes
@@ -15,16 +15,16 @@ class Forecast
     def lookup(zip:)
       location = ZipCodeLookup.fetch(zip)
       cache_hit = true
-      forecast = Rails.cache.fetch("forecast/zip/#{zip}", expires_in: CACHE_TTL) do
+      forecast_data = Rails.cache.fetch("forecast/zip/#{zip}", expires_in: CACHE_TTL) do
         cache_hit = false
         lat, lng = location.values_at(*%i[latitude longitude])
-        pool.with { |forecaster| forecaster.forecast(lat:, lng:) }
+        pool.with { |forecaster| forecaster.forecast(key: :forecast, lat:, lng:) }
       end
-      [ location, forecast, cache_hit ]
+      Forecast.new(zip:, cache_hit:, **forecast_data)
     end
 
   protected
-    def pool = @pool ||= ConnectionPool.new(size: POOL_SIZE) { Forecast.send(:new) }
+    def pool = @pool ||= ConnectionPool.new(size: POOL_SIZE) { ForecastFetcher.send(:new) }
     private :new
   end
 

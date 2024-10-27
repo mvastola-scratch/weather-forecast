@@ -15,7 +15,6 @@
 
 ## Reminders
 
-- [ ] it’s not just whether or not the code works that they will be focused on seeing – it’s all the rest of what goes into good Senior Software Engineering daily practices for Enterprise Production Level Code – such as specifically:
 - [ ] Unit Tests (#1 on the list of things people forget to include – so please remember, treat this as if it were true production level code, do not treat it just as an exercise),
 - [ ] Detailed Comments/Documentation within the code, also have a README file
 - [ ] Include *Decomposition* of the Objects in the Documentation
@@ -41,3 +40,4 @@
   - If needed in JS, we can read the value of a meta tag
 - Show `README.md`/`TODO.md` in navbar and render the files in a modal box
 - Use AJAX and/or React to fetch results as JSON and render on client-side
+- Ensure UI is responsive/looks good on smaller screens 
