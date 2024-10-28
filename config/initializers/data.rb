@@ -2,7 +2,7 @@
 
 
 ActiveSupport.on_load(:active_model) do
-  ActiveModel::Type.register(:forecast_periods, ForecastPeriodsType)
+  require "forecast_periods_type"
 end
 
 ActiveSupport.on_load(:after_initialize) do

@@ -8,7 +8,7 @@ gem "sprockets-rails"
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "jsbundling-rails"
-gem "cssbundling-rails"
+# gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
@@ -16,6 +16,7 @@ gem "cssbundling-rails"
 # gem "kredis"
 
 gem "addressable", require: %w[addressable/uri]
+gem 'connection_pool'
 gem "csv"
 gem "faraday"
 gem "faraday-retry"

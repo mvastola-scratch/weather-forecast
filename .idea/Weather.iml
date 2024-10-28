@@ -42,7 +42,6 @@
     <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.7, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.2, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="base64 (v0.2.0, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bcp47_spec (v0.2.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="better_errors (v2.10.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bigdecimal (v3.1.8, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, RVM: ruby-3.3.3) [gem]" level="application" />
@@ -55,7 +54,6 @@
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.3.4, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="connection_pool (v2.4.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="cssbundling-rails (v1.4.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="csv (v3.3.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="date (v3.3.4, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.9.2, RVM: ruby-3.3.3) [gem]" level="application" />
@@ -66,19 +64,12 @@
     <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v3.3.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-retry (v2.2.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.2.1, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="htmlentities (v4.3.4, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.6, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-console (v0.7.2, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="irb (v1.14.1, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.13.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jsbundling-rails (v1.3.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v2.7.4, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="json-canonicalization (v1.0.0, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="json-ld (v3.3.2, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="jsonlint (v0.4.0, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="kredis (v1.7.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.3, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="link_header (v0.0.8, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="logger (v1.6.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.23.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.8.1, RVM: ruby-3.3.3) [gem]" level="application" />
@@ -87,7 +78,6 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.7.3, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.15.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-http (v0.4.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.5.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, RVM: ruby-3.3.3) [gem]" level="application" />
@@ -96,7 +86,6 @@
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.7.3, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.16.7, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="oj (v3.16.6, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="optimist (v3.1.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ostruct (v0.6.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parallel (v1.26.3, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parser (v3.3.5.0, RVM: ruby-3.3.3) [gem]" level="application" />
@@ -114,10 +103,7 @@
     <orderEntry type="library" scope="PROVIDED" name="railties (v7.2.1.2, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.1.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.2.1, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rdf (v3.3.2, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v6.7.0, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="redis (v5.3.0, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="redis-client (v0.22.2, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.9.2, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="reline (v0.5.10, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rexml (v3.3.9, RVM: ruby-3.3.3) [gem]" level="application" />
@@ -130,10 +116,8 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails-omakase (v1.0.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="schema_dot_org (v2.2.3, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="securerandom (v0.3.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.25.0, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sorbet-runtime (v0.5.11618, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.2.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.5.2, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stringio (v3.1.1, RVM: ruby-3.3.3) [gem]" level="application" />
@@ -143,7 +127,6 @@
     <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v2.6.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uri (v0.13.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="useragent (v0.16.10, RVM: ruby-3.3.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="validated_object (v2.3.0, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v4.2.1, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="webrick (v1.8.2, RVM: ruby-3.3.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket (v1.2.11, RVM: ruby-3.3.3) [gem]" level="application" />
@@ -171,7 +154,6 @@
         <option value="generator" />
         <option value="helper" />
         <option value="integration_test" />
-        <option value="jbuilder" />
         <option value="job" />
         <option value="mailbox" />
         <option value="mailer" />
@@ -203,7 +185,6 @@
         <option value="generator" />
         <option value="helper" />
         <option value="integration_test" />
-        <option value="jbuilder" />
         <option value="job" />
         <option value="mailbox" />
         <option value="mailer" />
@@ -346,22 +327,6 @@
               <RakeTaskImpl description="Lookup nested dependencies for TEMPLATE (like messages/show or comments/_comment.html)" fullCommand="cache_digests:nested_dependencies" id="nested_dependencies" />
             </subtasks>
           </RakeTaskImpl>
-          <RakeTaskImpl id="css">
-            <subtasks>
-              <RakeTaskImpl description="Build your CSS bundle" fullCommand="css:build" id="build" />
-              <RakeTaskImpl description="Remove CSS builds" fullCommand="css:clobber" id="clobber" />
-              <RakeTaskImpl description="Install JavaScript dependencies" fullCommand="css:install" id="install" />
-              <RakeTaskImpl id="install">
-                <subtasks>
-                  <RakeTaskImpl description="Install Bootstrap" fullCommand="css:install:bootstrap" id="bootstrap" />
-                  <RakeTaskImpl description="Install Bulma" fullCommand="css:install:bulma" id="bulma" />
-                  <RakeTaskImpl description="Install PostCSS" fullCommand="css:install:postcss" id="postcss" />
-                  <RakeTaskImpl description="Install Sass" fullCommand="css:install:sass" id="sass" />
-                  <RakeTaskImpl description="Install Tailwind" fullCommand="css:install:tailwind" id="tailwind" />
-                </subtasks>
-              </RakeTaskImpl>
-            </subtasks>
-          </RakeTaskImpl>
           <RakeTaskImpl id="javascript">
             <subtasks>
               <RakeTaskImpl description="Build your JavaScript bundle" fullCommand="javascript:build" id="build" />
@@ -375,11 +340,6 @@
                   <RakeTaskImpl description="Install Webpack" fullCommand="javascript:install:webpack" id="webpack" />
                 </subtasks>
               </RakeTaskImpl>
-            </subtasks>
-          </RakeTaskImpl>
-          <RakeTaskImpl id="kredis">
-            <subtasks>
-              <RakeTaskImpl description="Install kredis" fullCommand="kredis:install" id="install" />
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="log">

@@ -1515,11 +1515,6 @@ sparkles@^2.1.0:
   resolved "https://registry.yarnpkg.com/sparkles/-/sparkles-2.1.0.tgz#8ad4e8cecba7e568bba660c39b6db46625ecf1ad"
   integrity sha512-r7iW1bDw8R/cFifrD3JnQJX0K1jqT0kprL48BiBpLZLJPmAm34zsVBsK5lc7HirZYZqMW65dOXZgbAGt/I6frg==
 
-spin.js@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/spin.js/-/spin.js-4.1.2.tgz#866180f0489ce90432201363e71c314f0db28824"
-  integrity sha512-ua/yEpxEwyEUWs57tMQYdik/KJ12sQRyMXjSlK/Ai927aEUDVY3FXUi4ml4VvlLCTQNIjC6tHyjSLBrJzFAqMA==
-
 stream-composer@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/stream-composer/-/stream-composer-1.0.2.tgz#7ee61ca1587bf5f31b2e29aa2093cbf11442d152"

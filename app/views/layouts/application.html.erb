@@ -5,6 +5,7 @@
     <title><%= content_for(:title) || "Weather" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-maps-api-key" content="<%= Rails.application.credentials.google_maps_api_key! %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,27 +17,29 @@
     <%= stylesheet_link_tag "application" %>
   </head>
 
-  <!-- Theme initially based on examples at https://getbootstrap.com/docs/5.3/examples/carousel/ -->
+  <!-- Theme initially (now loosely) based on examples at https://getbootstrap.com/docs/5.3/examples/carousel/ -->
   <body class="h-100 text-center d-flex flex-column">
 
   <header class="sticky-top w-100" data-bs-theme="dark">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><!-- TODO: use icon/logo here -->Weather</a>
+        <%= link_to root_path, class: 'navbar-brand' do %>
+          <img src="<%= asset_path 'logo.svg' %>" alt="Weather Forecasts" title="Weather Forecasts">
+        <% end %>
         <div class="navbar-collapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <%= nav_item search_path, 'Search', is_current: (current_page?(search_path) || current_page?(forecast_path)) %>
           </ul>
           <!-- These will be right-aligned -->
           <ul class="navbar-nav mb-2 mb-md-0">
+            <!-- TODO: render markdown in modal boxes -->
             <%#= nav_item '#', 'README.md', disabled: true %>
             <%#= nav_item '#', 'TODO.md', disabled: true %>
-            <%#= nav_item '#', 'Resume', disabled: true %>
+            <%= nav_item 'https://assets.vasto.la/resume.pdf', 'Resume', target: '_blank' %>
             <%= nav_item 'mailto:Mike@Vasto.la', 'Contact' %>
           </ul>
         </div>
       </div>
-      <br />
     </nav>
   </header>
 
