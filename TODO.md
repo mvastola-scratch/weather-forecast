@@ -1,17 +1,7 @@
 # TODO
 
 ## Missing Features / Bugs 
-- **Tests**
-- The order of the retry and raise-error handlers in faraday seem to be reversed. (It's raising an error after 1 try)
-
-
-## Requirements
-
-- [x] Must be done in Ruby on Rails
-- [x] Accept an address as input
-- [x] Retrieve forecast data for the given address. This should include, at minimum, the current temperature (Bonus points - Retrieve high/low and/or extended forecast)
-- [x] Display the requested forecast details to the user
-- [x] Cache the forecast details for 30 minutes for all subsequent requests by zip codes. Display indicator if result is pulled from cache.
+- Flesh out tests to be comprehensive
 
 ## Reminders
 
@@ -35,6 +25,5 @@
 - Use geolocation in browser to optionally fetch users' current location
 - Switch to importmap(?) or a more streamlined JS solution (possibly one that doesn't require building)
   - would require removing or stripping TypeScript and SCSS
-- Show `README.md`/`TODO.md` in navbar and render the files in a modal box
 - Use AJAX and/or React to fetch results as JSON and render on client-side
 - Ensure UI is responsive/looks good on smaller screens 

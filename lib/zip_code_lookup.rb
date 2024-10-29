@@ -21,8 +21,8 @@ class ZipCodeLookup
   class NotFound < RuntimeError; end
 
   class << self
-    def fetch(zip, default = nil)
-      instance.fetch(zip.to_i, default)
+    def fetch(zip)
+      instance.fetch(zip.to_i)
     rescue KeyError => error
       Rails.logger.warn(error.full_message)
       raise ZipCodeLookup::NotFound, "Zip code '#{zip}' could not be found"

@@ -58,7 +58,7 @@ class Forecast
     attr_name == 'periods' ? super&.map(&:serializable_hash) : super
   end
 
-  def zip_location(default = nil) = ZipCodeLookup.fetch(zip, default)
+  def zip_location = @zip_location ||= ZipCodeLookup.fetch(zip)
 
   def cache_hit? = cache_hit
   def valid?(context = nil)

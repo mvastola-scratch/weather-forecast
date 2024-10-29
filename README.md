@@ -22,11 +22,36 @@ Prefix      Verb URI Pattern                Controller#Action
 root        GET  /                          redirect(301, /forecast)
 search      GET  /forecast(.:format)        forecasts#index
 forecast    GET  /forecast/:zip(.:format)   forecasts#show
+readme      GET  /readme(.:format)          markdown#readme
 ```
+
+## Models (via ActiveModel)
+
+### `Forecast`
+
+Relevant fields:
+- `zip` (`Integer`)
+- `cache_hit` (`true` or `false`)
+- `update_time` (`Time`)
+- `periods` (`Array` of `ForecastPeriod`)
+
+### `ForecastPeriod`
+
+Relevant fields:
+- `number` (`Integer`) (1-based index of the `ForecastPeriod`)
+- `name` (`String`) (for example: `Today` or `Tuesday Night`)
+- `temperature` (`Integer`)
+- `temperature_unit` (`String`)
+- `probability_of_precipitation` (`Integer`)
+- `wind_speed` (`String`)
+- `wind_direction` (`String`) (One of `N`, `S`, `E`, `W`)
+- `icon` (`String`) (URL)
+- `short_forecast` (`String`)
+- `detailed_forecast` (`String`)
 
 ## External APIs
 
-- Weather.gov ([docs](https://www.weather.gov/documentation/services-web-api)) ([schema][https://editor.swagger.io/?url=https://api.weather.gov/openapi.json])
+- Weather.gov ([docs](https://www.weather.gov/documentation/services-web-api)) ([schema](https://editor.swagger.io/?url=https://api.weather.gov/openapi.json))
 - Google Maps Places API ([docs](https://developers.google.com/maps/documentation/places/web-service/autocomplete)) ([ui component](https://github.com/googlemaps/extended-component-library))
 
 <!-- Other relevant links
@@ -38,6 +63,3 @@ forecast    GET  /forecast/:zip(.:format)   forecasts#show
 - https://visgl.github.io/react-google-maps/docs
 - https://developers.google.com/maps/documentation/javascript/examples/rgm-college-picker
 -->
-
-
-

@@ -28,13 +28,14 @@
         <% end %>
         <div class="navbar-collapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <%= nav_item search_path, 'Search', is_current: (current_page?(search_path) || current_page?(forecast_path)) %>
+            <%= nav_item search_path, 'Search', is_current: current_page?(search_path) ||
+                         current_page?(forecast_path(zip: @zip || 0), check_parameters: false) %>
           </ul>
           <!-- These will be right-aligned -->
           <ul class="navbar-nav mb-2 mb-md-0">
             <!-- TODO: render markdown in modal boxes -->
-            <%#= nav_item '#', 'README.md', disabled: true %>
-            <%#= nav_item '#', 'TODO.md', disabled: true %>
+            <%= nav_item readme_path, 'README.md' %>
+            <%#= nav_item todo_path, 'TODO.md' %>
             <%= nav_item 'https://assets.vasto.la/resume.pdf', 'Resume', target: '_blank' %>
             <%= nav_item 'mailto:Mike@Vasto.la', 'Contact' %>
           </ul>
@@ -47,13 +48,14 @@
     <main class="px-3">
       <div id="flashes">
         <% flash.each do |key, value| %>
-          <%= tag :div, value, class: flash_class(key) %>
+          <%= content_tag :div, value, class: flash_class(key), role: 'alert' %>
         <% end %>
       </div>
 
       <%= yield %>
     </main>
 
+    <!-- TODO: Fix broken sticky footer -->
     <footer class="mt-auto text-black-50">
       <p>A coding challenge by <a href="mailto:Mike@Vasto.la">Mike Vastola</a>.</p>
     </footer>

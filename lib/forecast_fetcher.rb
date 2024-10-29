@@ -61,6 +61,7 @@ class ForecastFetcher
       f.request :retry, max: 3
       f.response :logger, Rails.logger, { headers: false, bodies: !Rails.env.production?, errors: true }
       f.response :raise_error
+      # If load justified it, we'd use an adapter supporting persistent connections
     end
   end
 

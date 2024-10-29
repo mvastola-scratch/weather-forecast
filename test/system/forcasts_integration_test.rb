@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class ForecastsTest < ApplicationSystemTestCase
+class ForecastsIntegrationTest < ApplicationSystemTestCase
   setup do
   end
 
@@ -32,6 +32,11 @@ class ForecastsTest < ApplicationSystemTestCase
     end
 
     within '#forecast-carousel' do
+      # Ensure the right number of forcasted days are shown
+      within '.carousel-indicators' do
+        assert_selector 'button', count: Forecast::FORECASTED_DAYS
+      end
+      # Ensure all expected fields are rendered in each forecast card
       within '.carousel-inner' do
         assert_selector 'div.forecast-card', between: 1..2
         assert_selector 'img.forecast-image', between: 1..2
@@ -39,12 +44,17 @@ class ForecastsTest < ApplicationSystemTestCase
         assert_selector '.forecast-temperature', between: 1..2
         assert_selector '.forecast-description', between: 1..2
         assert_selector '.forecast-wind', between: 1..2
+        # Only visible if non-zero:
         assert_selector '.forecast-precipitation', between: 0..2
-      end
-      within '.carousel-indicators' do
-        assert_selector 'button', count: Forecast::FORECASTED_DAYS
       end
     end
   end
 
+  test "should show error on invalid zip" do
+    visit forecast_url(zip: 'foo')
+    assert_current_path search_path
+    within 'div#flashes' do
+      assert_text "Could not obtain forecast:"
+    end
+  end
 end

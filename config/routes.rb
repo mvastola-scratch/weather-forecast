@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   root to: redirect('/forecast')
   get 'forecast', to: 'forecasts#index', as: :search
   get 'forecast/:zip', to: 'forecasts#show', as: :forecast
+  get 'readme', to: 'markdown#readme', as: :readme
 end

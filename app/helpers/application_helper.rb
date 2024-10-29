@@ -2,8 +2,8 @@ module ApplicationHelper
   FLASH_CLASSES = {
     notice: "alert alert-info",
     success: "alert alert-success",
-    error: "alert alert-error",
-    alert: "alert alert-error",
+    error: "alert alert-danger",
+    alert: "alert alert-warning",
   } .freeze
 
   def flash_class(level)
@@ -13,7 +13,7 @@ module ApplicationHelper
   def nav_item(target, text = nil, disabled: false, is_current: nil, **link_attribs, &block)
     link_attribs.stringify_keys!
     is_current = current_page?(target) if is_current.nil?
-    link_classes = [ link_attribs.delete("class"), "nav-link", is_current && "active" ].compact_blank.to_set
+    link_classes = [ link_attribs.delete("class")&.split(/\s+/), "nav-link", is_current && "active" ].compact_blank.to_set
     if is_current
       link_attribs["aria-current"] = "page"
       link_classes << "active"

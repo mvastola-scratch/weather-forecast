@@ -31,6 +31,7 @@ Rails.application.configure do
     # config.cache_store = :null_store
   end
 
+  # NOTE: if this were production, we'd use redis or similar
   config.cache_store = :memory_store
 
   # Print deprecation notices to the Rails logger.
