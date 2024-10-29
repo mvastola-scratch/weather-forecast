@@ -1,17 +1,16 @@
 class ForecastsController < ApplicationController
   def index
-    respond_to do |format| # TODO: look up the short way of doing this
-      format.html
-    end
+    respond_to :html
   end
 
   def show
     zip = params.fetch(:zip)
     @forecast = ForecastFetcher.lookup(zip:)
+    respond_to :html
 
-    respond_to do |format|
-      format.html { render layout: !request.xhr? } # no layout if xhr request
-      # format.json
-    end
+  rescue ForecastFetcher::Error => error
+    flash[:error] = "Could not obtain forecast: #{error.message}"
+    Rails.logger.warn(error.detailed_message)
+    redirect_to action: :index
   end
 end

@@ -11,7 +11,8 @@ _First, you must obtain the `master.key` file from the author to decrypt the Goo
 ```bash
 $ bundle install
 $ yarn install
-$ yarn build 
+$ yarn build
+$ bundle exec rails test:all # to run tests 
 $ bundle exec rails s
 ```
 

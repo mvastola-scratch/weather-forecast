@@ -4,17 +4,16 @@
   </span>
   -->
   <span class="h3">
-  <%= @forecast.zip_location[:city] %>, <%= @forecast.zip_location[:state] %> Forecast
+    <span class="forecast-location">
+      <%= @forecast.zip_location[:city] %>, <%= @forecast.zip_location[:state] %>
+    </span> Forecast
   </span>
-  <% if @forecast.cache_hit %>
-    <span class="badge rounded-pill text-bg-info align-text-top"><small>Cache Hit</small></span>
-  <% else %>
-    <span class="badge rounded-pill text-bg-warning align-text-top"><small>Cache Miss</small></span>
-  <% end %>
+
+  <%= cache_status_badge(@forecast.cache_hit?) %>
 
 </div>
   <small class="text-body-secondary">
-    Last updated <%= @forecast.update_time.localtime.to_fs(:rfc822) %>
+    Last updated <span class="forecast-timestamp"><%= @forecast.update_time.localtime.to_fs(:rfc822) %></span>
   </small>
 
   <div id="forecast-carousel" class="carousel slide mb-6 py-2 mt-2" data-bs-ride="carousel">

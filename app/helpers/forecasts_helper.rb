@@ -40,4 +40,12 @@ module ForecastsHelper
   def carousel_buttons(target:)
     carousel_button(:prev, target:) + carousel_button(:next, target:)
   end
+
+  def cache_status_badge(is_hit)
+    text = is_hit ? 'Hit' : 'Miss'
+    color_class = is_hit ? 'text-bg-info' : 'text-bg-warning'
+    content_tag :span, class: %W[badge rounded-pill align-text-top #{color_class}] do
+      content_tag :small, "Cache #{text}"
+    end
+  end
 end

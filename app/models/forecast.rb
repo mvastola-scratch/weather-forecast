@@ -60,6 +60,7 @@ class Forecast
 
   def zip_location(default = nil) = ZipCodeLookup.fetch(zip, default)
 
+  def cache_hit? = cache_hit
   def valid?(context = nil)
     super && periods&.all? { _1.valid?(context) }
   end

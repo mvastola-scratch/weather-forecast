@@ -1,10 +1,11 @@
 <div class="card forecast-card mx-1" style="width: 16rem;">
   <!-- TODO: we should really pull all these icons and serve locally so they can be cached/preloaded -->
-  <%= tag :img, src: prediction.icon, class: "card-img-top", alt: prediction.detailed_forecast, title: prediction.detailed_forecast %>
-  <h5 class="card-header"><%= prediction.name %></h5>
+  <%= tag :img, src: prediction.icon, class: "card-img-top forecast-image",
+          alt: prediction.detailed_forecast, title: prediction.detailed_forecast %>
+  <h5 class="card-header forecast-name"><%= prediction.name %></h5>
   <div class="card-body">
-    <h4><%= prediction.temperature %>&nbsp;&deg;<%= prediction.temperature_unit %></h4>
-    <p class="card-text">
+    <h4 class="forecast-temperature"><%= prediction.temperature %>&nbsp;&deg;<%= prediction.temperature_unit %></h4>
+    <p class="card-text forecast-description">
       <%= prediction.short_forecast %>
       <a data-bs-toggle="tooltip" data-bs-title="<%= prediction.detailed_forecast %>">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="info-icon">
@@ -13,11 +14,13 @@
         </svg>
       </a>
     </p>
-    <p class="card-text">
-      <% if prediction.precipitation? %>
-        <%= prediction.probability_of_precipitation %>% chance precipitation<br />
-      <% end %>
+    <p class="card-text forecast-wind">
       Winds <%= prediction.wind_speed %> <%= prediction.wind_direction %>
     </p>
+    <% if prediction.precipitation? %>
+      <p class="card-text forecast-precipitation">
+        <%= prediction.probability_of_precipitation %>% chance precipitation<br />
+      </p>
+    <% end %>
   </div>
 </div>

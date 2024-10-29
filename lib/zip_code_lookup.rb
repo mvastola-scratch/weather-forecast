@@ -18,8 +18,15 @@ class ZipCodeLookup
     header_converters: %i[downcase symbol],
     converters: %i[integer float] # zip needs to be integer to avoid issues with leading 0s
   }
+  class NotFound < RuntimeError; end
+
   class << self
-    def fetch(zip, default = nil) = instance.fetch(zip.to_i, default)
+    def fetch(zip, default = nil)
+      instance.fetch(zip.to_i, default)
+    rescue KeyError => error
+      Rails.logger.warn(error.full_message)
+      raise ZipCodeLookup::NotFound, "Zip code '#{zip}' could not be found"
+    end
     def loaded? = defined?(@instance)
     def instance
       # This implementation ensures thread-safety

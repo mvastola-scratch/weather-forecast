@@ -3,10 +3,10 @@
 ## Missing Features / Bugs 
 - **Tests**
 - The order of the retry and raise-error handlers in faraday seem to be reversed. (It's raising an error after 1 try)
-- Link weather.gov OpenAPI spec in `README.md`
 
 
 ## Requirements
+
 - [x] Must be done in Ruby on Rails
 - [x] Accept an address as input
 - [x] Retrieve forecast data for the given address. This should include, at minimum, the current temperature (Bonus points - Retrieve high/low and/or extended forecast)
@@ -27,7 +27,6 @@
 
 ## Wish List
 
-- Encapsulate API responses in a class (ActiveModel?) to avoid unnecessary logic in view/controller
 - Implement a server-side autocomplete while retaining as good of a UX
   - This will remove the need to use a dataset, and allow us to search directly by coordinates (right now this isn't secure because we're caching and coordinates are obtained client-side)
 - Configure CSP initializer
@@ -36,8 +35,6 @@
 - Use geolocation in browser to optionally fetch users' current location
 - Switch to importmap(?) or a more streamlined JS solution (possibly one that doesn't require building)
   - would require removing or stripping TypeScript and SCSS
-- Don't require encoding google maps api key into JS (via `Gulpfile.js`)
-  - If needed in JS, we can read the value of a meta tag
 - Show `README.md`/`TODO.md` in navbar and render the files in a modal box
 - Use AJAX and/or React to fetch results as JSON and render on client-side
 - Ensure UI is responsive/looks good on smaller screens 

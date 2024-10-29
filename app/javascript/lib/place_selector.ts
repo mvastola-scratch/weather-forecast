@@ -8,6 +8,22 @@ const getAPIKey = () => {
   return metaTag?.innerText?.trim();
 }
 
+const setForecastLookupZip = (zip) => {
+  const btn: HTMLButtonElement|null = document.querySelector('#forecast-lookup-btn');
+  if (!btn) return;
+
+  btn.disabled = !zip;
+  btn.dataset['zip'] = zip || null;
+}
+globalThis.setForecastLookupZip = setForecastLookupZip;
+
+const lookupCb = (e: Event) => {
+  e.preventDefault();
+  const btn = e.target as HTMLButtonElement;
+  if (btn.disabled || !btn.dataset['zip']) return false;
+  document.location.pathname = `/forecast/${btn.dataset.zip}`;
+};
+
 const autocompleteCb = async (e: PlaceAutocompletePlaceSelectEvent) => {
   const { place } = e;
   await place.fetchFields({ fields: ['displayName', 'formattedAddress', 'location', 'addressComponents'] });
@@ -20,7 +36,7 @@ const autocompleteCb = async (e: PlaceAutocompletePlaceSelectEvent) => {
   //  google doesn't seem to offer an event when the value of the textbox is cleared,
   //  so if we relied on the button, it wouldn't always be in-sync with the text box
   if (zip) {
-    document.location.pathname = `/forecast/${zip}`;
+    setForecastLookupZip(zip);
   } else {
     alert("US Zip Code required. Please provide an exact address within the US.")
   }
@@ -41,6 +57,7 @@ const setupLocationAutocomplete = async () => {
   placeAutocomplete.addEventListener('gmp-placeselect', autocompleteCb as (e: Event) => unknown);
   rootElement.appendChild(placeAutocomplete);
 
+  document.querySelector('#forecast-lookup-btn')?.addEventListener('click', lookupCb);
   console.log('setupLocationAutocomplete complete');
 };
 
